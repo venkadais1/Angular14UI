@@ -8,8 +8,8 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { StatusComponent } from './status/status.component';
-import { RegisterComponent } from './access/register/register.component';
 import { AddcontactComponent } from './addcontact/addcontact.component';
+import { AccessRoutingModule } from './access/access-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,14 +17,14 @@ import { AddcontactComponent } from './addcontact/addcontact.component';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    StatusComponent,
-    RegisterComponent,
-    AddcontactComponent
+    StatusComponent, 
+    AddcontactComponent,
   ],
   imports: [
     BrowserModule,
     LoginComponent,
-    AppRoutingModule
+    AppRoutingModule,
+    AccessRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
