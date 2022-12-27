@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AddcontactComponent } from './addcontact/addcontact.component';
 import { ContactComponent } from './contact/contact.component';
+import { DirectivesamplesComponent } from './directivesamples/directivesamples.component';
 import { HomeComponent } from './home/home.component';
 import { PipesamplesComponent } from './pipesamples/pipesamples.component';
 import { StatusComponent } from './status/status.component';
@@ -19,9 +20,11 @@ const routes: Routes = [
       {path:"edit/:id", component:AddcontactComponent}
     ]
   },
+  {path:"directives", component:DirectivesamplesComponent},
   //Layzy Loading
   {path:"access", loadChildren:()=>import("./access/access.module").then(opt=>opt.AccessModule)},
-  {path:"login", loadComponent:()=>import("./login/login.component").then(opt=>opt.LoginComponent)},
+  {path:"login", loadComponent:()=>import("./login/login.component").then(opt=>opt.LoginComponent)},         
+  //While card entry
   {path:"***", component:StatusComponent}
 ];
 

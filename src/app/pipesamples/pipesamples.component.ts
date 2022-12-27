@@ -16,6 +16,9 @@ export class PipesamplesComponent {
   DOJ = "2023-01-09";
   IsDisabled = false;
   btnDisbleText ="Disable";
+
+  MaxSalary =1000000;
+  salaryColor ="Green";
   fnClick(sal: number){
       alert("Your salary:"+sal);
   }
@@ -30,7 +33,14 @@ export class PipesamplesComponent {
     else
       this.btnDisbleText = "Enable";
     this.IsDisabled= !this.IsDisabled;
+  }
 
+  fnChangeSalColor(salValue:any)
+  {
+    if(salValue>1500000)
+      this.salaryColor="Red";
+    else
+      this.salaryColor ="Green";
   }
 
 

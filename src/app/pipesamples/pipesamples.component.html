@@ -1,11 +1,22 @@
 <h2>{{Title| titlecase}}</h2>
 
-<!--Event Binding START-->
+<!--Event Binding START (click)="fnClick(1000);"-->
 <button (click)="fnClick(1000);">Click</button>
-<button (click)="fnDisable();">{{btnDisbleText}}</button>
-<input [disabled]="IsDisabled" #txtShow (change)="fnTxtMessage(txtShow.value)" />
 <!--Event Binding END-->
 
+<!--Interpolation data binding START {{btnDisbleText}}-->
+<button (click)="fnDisable();">{{btnDisbleText}}</button>
+<!--Interpolation data binding END-->
+
+<!--Property Binding START [disabled]="IsDisabled"-->
+<input [disabled]="IsDisabled" #txtShow (change)="fnTxtMessage(txtShow.value)" />
+<!--Property Binding END-->
+
+<!--Tow Way Binding START [(ngModel)]="Title"-->
+<input #txtSal (ngModelChange)="fnChangeSalColor(txtSal.value)" [(ngModel)]="MaxSalary"/>
+<!--Tow Way Binding END-->
+<label [style.color]="salaryColor">{{MaxSalary}}</label>
+<!--Default Pipes START-->
 <table class="table">
     <thead>
         <tr>
@@ -33,3 +44,4 @@
         </tr>
     </tbody>
 </table>
+<!--Default Pipes END-->

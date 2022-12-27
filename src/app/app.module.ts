@@ -11,6 +11,8 @@ import { StatusComponent } from './status/status.component';
 import { AddcontactComponent } from './addcontact/addcontact.component';
 import { AccessRoutingModule } from './access/access-routing.module';
 import { PipesamplesComponent } from './pipesamples/pipesamples.component';
+import { FormsModule } from '@angular/forms';
+import { DirectivesamplesComponent } from './directivesamples/directivesamples.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { PipesamplesComponent } from './pipesamples/pipesamples.component';
     ContactComponent,
     StatusComponent, 
     AddcontactComponent, 
-    PipesamplesComponent,
+    PipesamplesComponent, 
+    DirectivesamplesComponent,
   ],
   imports: [
     BrowserModule,
     LoginComponent,
     AppRoutingModule,
+    FormsModule,
     AccessRoutingModule
   ],
   providers: [],
