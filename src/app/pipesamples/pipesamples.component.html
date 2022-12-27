@@ -1,0 +1,35 @@
+<h2>{{Title| titlecase}}</h2>
+
+<!--Event Binding START-->
+<button (click)="fnClick(1000);">Click</button>
+<button (click)="fnDisable();">{{btnDisbleText}}</button>
+<input [disabled]="IsDisabled" #txtShow (change)="fnTxtMessage(txtShow.value)" />
+<!--Event Binding END-->
+
+<table class="table">
+    <thead>
+        <tr>
+            <td class="col">Emp Id</td>
+            <td class="col">Emp Name</td>
+            <td class="col">Department</td>
+            <td class="col">Salary</td>
+            <td class="col">Date Of Join</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">{{EmployeeId}}</td>
+            <td>{{EmployeeName+" "+FatherName |titlecase}}</td>
+            <td>{{Department}}</td>
+            <td>{{Salary | currency:'INR'}}</td>
+            <td>{{DOJ| date:'dd-MMM-yyyy'}}</td>
+        </tr>
+        <tr>
+            <td scope="row">{{EmployeeId}}</td>
+            <td>{{EmployeeName+" "+FatherName |titlecase}}</td>
+            <td>{{Department}}</td>
+            <td>{{Salary | currency:'INR'}}</td>
+            <td>{{DOJ| date:'dd-MMM-yyyy'}}</td>
+        </tr>
+    </tbody>
+</table>

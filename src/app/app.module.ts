@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { StatusComponent } from './status/status.component';
 import { AddcontactComponent } from './addcontact/addcontact.component';
 import { AccessRoutingModule } from './access/access-routing.module';
+import { PipesamplesComponent } from './pipesamples/pipesamples.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AccessRoutingModule } from './access/access-routing.module';
     AboutComponent,
     ContactComponent,
     StatusComponent, 
-    AddcontactComponent,
+    AddcontactComponent, 
+    PipesamplesComponent,
   ],
   imports: [
     BrowserModule,
