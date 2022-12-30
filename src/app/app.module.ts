@@ -13,6 +13,8 @@ import { AccessRoutingModule } from './access/access-routing.module';
 import { PipesamplesComponent } from './pipesamples/pipesamples.component';
 import { FormsModule } from '@angular/forms';
 import { DirectivesamplesComponent } from './directivesamples/directivesamples.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http' 
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { DirectivesamplesComponent } from './directivesamples/directivesamples.c
     LoginComponent,
     AppRoutingModule,
     FormsModule,
-    AccessRoutingModule
+    AccessRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

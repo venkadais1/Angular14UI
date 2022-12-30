@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './directivesamples.component.html',
   styleUrls: ['./directivesamples.component.css']
 })
-export class DirectivesamplesComponent {
+export class DirectivesamplesComponent  {
+
+  empSalary =1000;
 
 }

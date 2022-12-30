@@ -1,1 +1,25 @@
-<p>login works!</p>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>User Login</mat-card-title>
+    </mat-card-header>  
+    <mat-card-content>
+        <form class="example-form" #loginForm="ngForm" (submit)="LoginCall(loginForm)">
+            <mat-form-field class="example-full-width">
+              <mat-label>User Name</mat-label>
+              <input matInput type="text" name="username" placeholder="alwin" required ngModel>
+            </mat-form-field>
+          
+            <mat-form-field class="example-full-width">
+              <mat-label>password</mat-label>
+              <input matInput type="password" name="password" placeholder="Password" required ngModel>
+            </mat-form-field>
+            <div class="example-footer-button">
+                <button mat-raised-button color="primary" type="submit">Login</button>
+                <button mat-raised-button>Cancle</button>
+                <button mat-raised-button color="warn" (click)="FnRegister()">Register</button>
+            </div>
+          </form> 
+          
+    </mat-card-content>  
+    <mat-progress-bar mode="determinate" value="0"></mat-progress-bar>
+  </mat-card>
