@@ -1,0 +1,14 @@
+.ng-star-inserted
+{
+    width: 100%;
+}
+
+.example-footer-button
+{
+    padding: 10px;
+}
+
+.example-footer-button>button
+{
+    margin: 5px;
+}

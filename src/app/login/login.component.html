@@ -15,7 +15,7 @@
             </mat-form-field>
             <div class="example-footer-button">
                 <button mat-raised-button color="primary" type="submit">Login</button>
-                <button mat-raised-button>Cancle</button>
+                <button mat-raised-button (click)="FnLogout(loginForm)">Cancle</button>
                 <button mat-raised-button color="warn" (click)="FnRegister()">Register</button>
             </div>
           </form> 

@@ -11,10 +11,16 @@ import { StatusComponent } from './status/status.component';
 import { AddcontactComponent } from './addcontact/addcontact.component';
 import { AccessRoutingModule } from './access/access-routing.module';
 import { PipesamplesComponent } from './pipesamples/pipesamples.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectivesamplesComponent } from './directivesamples/directivesamples.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http' 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { UserComponent } from './user/user.component'
+import { materialModule } from './material-module';
+import { TokenInterceptorService } from './services/TokenInterceptorService';
+import { ModelPopupComponent } from './model-popup/model-popup.component';
+import { SalIndicatorPipePipe } from './common/pipes/sal-indicator-pipe.pipe';
+import { RetryInterceptor } from './common/interceptor/retry.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,10 +28,13 @@ import { HttpClientModule } from '@angular/common/http'
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    StatusComponent, 
-    AddcontactComponent, 
-    PipesamplesComponent, 
+    StatusComponent,
+    AddcontactComponent,
+    PipesamplesComponent,
     DirectivesamplesComponent,
+    UserComponent,
+    ModelPopupComponent,
+    SalIndicatorPipePipe,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +43,15 @@ import { HttpClientModule } from '@angular/common/http'
     FormsModule,
     AccessRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    materialModule,
+    ReactiveFormsModule
+
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: RetryInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

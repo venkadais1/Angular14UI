@@ -5,7 +5,11 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
     exports: [
@@ -15,8 +19,12 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
         MatInputModule,
         MatDividerModule,
         MatProgressBarModule,
-    ],
-    imports:[]
+        MatTableModule,
+        MatPaginatorModule,
+        MatDialogModule,
+        MatCheckboxModule,
+        MatSelectModule
+    ]
 })
 
 export class materialModule

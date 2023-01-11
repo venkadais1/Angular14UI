@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class AppComponent implements DoCheck {
 
   title = 'myAppUI';
-  IsLoggedIn=true;
+  IsLoggedIn = true;
+  HasFooter = false;
   currentRouteUrl="";
   constructor(private route:Router)
   {
@@ -21,7 +22,7 @@ export class AppComponent implements DoCheck {
   }
   ngDoCheck(): void {
     this.currentRouteUrl = this.route.url;
-     if(this.currentRouteUrl=="/login")
+   if(this.currentRouteUrl=="/login" || this.currentRouteUrl =="/access/register")
      {
         this.IsLoggedIn = false;
      }

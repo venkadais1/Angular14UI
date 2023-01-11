@@ -8,6 +8,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { PipesamplesComponent } from './pipesamples/pipesamples.component';
 import { StatusComponent } from './status/status.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {path:"home", component:HomeComponent, canActivate:[AuthGuard]},
@@ -17,10 +18,12 @@ const routes: Routes = [
     path:"contact",
     component: ContactComponent,
     children:[
-      {path:"add", component:AddcontactComponent, canActivate:[AuthGuard]},
-      {path:"edit/:id", component:AddcontactComponent, canActivate:[AuthGuard]}
-    ]
+      {path:"add", component:AddcontactComponent},
+      {path:"edit/:id", component:AddcontactComponent}
+
+    ], canActivate:[AuthGuard]
   },
+  {path:"user", component:UserComponent},
   {path:"directives", component:DirectivesamplesComponent},
   //Layzy Loading
   {path:"access", loadChildren:()=>import("./access/access.module").then(opt=>opt.AccessModule)},
