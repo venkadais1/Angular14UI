@@ -14,13 +14,17 @@ import { PipesamplesComponent } from './pipesamples/pipesamples.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectivesamplesComponent } from './directivesamples/directivesamples.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserComponent } from './user/user.component'
 import { materialModule } from './material-module';
-import { TokenInterceptorService } from './services/TokenInterceptorService';
 import { ModelPopupComponent } from './model-popup/model-popup.component';
+import { LifeCycleComponent } from './life-cycle/life-cycle.component';
+//custom pipes
 import { SalIndicatorPipePipe } from './common/pipes/sal-indicator-pipe.pipe';
+//interceptors
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './services/TokenInterceptorService';
 import { RetryInterceptor } from './common/interceptor/retry.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import { RetryInterceptor } from './common/interceptor/retry.interceptor';
     UserComponent,
     ModelPopupComponent,
     SalIndicatorPipePipe,
+    LifeCycleComponent,
   ],
   imports: [
     BrowserModule,

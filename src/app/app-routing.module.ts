@@ -9,11 +9,13 @@ import { HomeComponent } from './home/home.component';
 import { PipesamplesComponent } from './pipesamples/pipesamples.component';
 import { StatusComponent } from './status/status.component';
 import { UserComponent } from './user/user.component';
+import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 
 const routes: Routes = [
   {path:"home", component:HomeComponent, canActivate:[AuthGuard]},
   {path:"about", component:AboutComponent, canActivate:[AuthGuard]},
   {path:"pipes", component:PipesamplesComponent},
+  {path:"lifecycle", component:LifeCycleComponent},
   {
     path:"contact",
     component: ContactComponent,
@@ -23,7 +25,7 @@ const routes: Routes = [
 
     ], canActivate:[AuthGuard]
   },
-  {path:"user", component:UserComponent},
+  {path:"user", component:UserComponent,canActivate:[AuthGuard]},
   {path:"directives", component:DirectivesamplesComponent},
   //Layzy Loading
   {path:"access", loadChildren:()=>import("./access/access.module").then(opt=>opt.AccessModule)},

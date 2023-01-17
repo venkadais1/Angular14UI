@@ -43,11 +43,7 @@ export class LoginComponent implements OnInit {
        {
           localStorage.setItem("token",this.responseData.jwtToken);
           this.route.navigate(["home"]);  
-       }
-       else
-       {
-          alert("Login Failed");
-       }
+       } 
       },(error)=>{
         this.fnErrorLogin(error);
         this.FnLogout(loginForm);
@@ -61,6 +57,7 @@ export class LoginComponent implements OnInit {
 
   fnErrorLogin(status: HttpErrorResponse)
   {
+    //debugger;
     if(status.status ==0 && !status.ok)
     {
        alertify.error("Unable to connect to server, Please contact administrator");

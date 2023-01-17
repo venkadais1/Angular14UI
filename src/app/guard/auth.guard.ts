@@ -9,11 +9,13 @@ import { UserService } from '../services/user.service';
 export class AuthGuard implements CanActivate {
   constructor(private service: UserService, private route: Router)
   {
-
+      //debugger;
   }
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree 
+    {
+      //debugger;
       if(this.service.IsLoggedIn())
       {
         return true;

@@ -103,7 +103,7 @@ export class UserComponent implements OnInit {
         this.removedData = item;
         if (this.removedData != null) {
           this.GetAllUsers();
-          alertify.successfully(`User ${user.name} details updated successfully!`)
+          alertify.success(`User ${user.name} details updated successfully!`)
         }
       });
 

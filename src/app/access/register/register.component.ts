@@ -37,16 +37,16 @@ export class RegisterComponent
       //console.log(this.reactiveForm);
         this.service.RegisterNewUser(this.reactiveForm.value).subscribe(item=>{
           this.registerResponse = item;
-          debugger;
+          //debugger;
            if(this.registerResponse!=null && this.registerResponse.result=="pass")
            {
-            alertify.successfully("Registration done successfully!, Please contact admin to activate");
+            alertify.success("Registration done successfully!, Please contact admin to activate");
               this.FnRedirectToLogin();
            }
            else
            {
               // Registration failed
-              alertify.failed("Registration failed please try with valid values");
+              alertify.error("The user registration is failed due to invalid input");
            }
         });
 

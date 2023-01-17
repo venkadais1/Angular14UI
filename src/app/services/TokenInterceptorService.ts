@@ -7,12 +7,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TokenInterceptorService implements HttpInterceptor {
-  token = localStorage.getItem("token");
+  
   constructor() { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    let token = localStorage.getItem("token");
     let jwtToken = req.clone({
       setHeaders: {
-        Authorization: `Bearer ${this.token}`
+        Authorization: `Bearer ${token}`
       }
     });
     return next.handle(jwtToken);

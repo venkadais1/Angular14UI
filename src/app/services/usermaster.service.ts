@@ -13,6 +13,8 @@ export class UsermasterService {
   { }
 
   GetUsers(): Observable<UserModel[]> {
+      //debugger;
+      console.log(this.http.head);
      return this.http.get<UserModel[]>(`${AppConstant.appBaseUri}/api/UserMaster`);
   }
 
