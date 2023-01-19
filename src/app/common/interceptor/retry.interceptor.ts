@@ -7,39 +7,70 @@ import {
   HttpErrorResponse,
   HttpResponse
 } from '@angular/common/http';
-import { catchError, Observable, of, retry, timer } from 'rxjs';
+import { catchError, Observable, of, retry, throwError, timer } from 'rxjs';
 import { Router } from '@angular/router';
+import * as alertify from 'alertifyjs'
 
 @Injectable()
 export class RetryInterceptor implements HttpInterceptor {
-  //readonly MAX_RETRY_COUNT = 3;
-  constructor(private route: Router) { }
+  constructor(private router: Router) { }  
 
-  ShouldRetry(errors: HttpErrorResponse, retryCount: number): any {
-    //debugger;
-    console.log(`Attemping to Reconnect....(${retryCount})`);
-    if (errors.status == 0 || errors.status == 401) {
-      return timer(1000);
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(request).pipe(
+      retry({ count: 3, delay: this.ShouldRetry }),
+      catchError((error) => { 
+        console.log('error is intercept') 
+        this.handleError(error);
+        return throwError(()=>error);
+      }));
+  }
+
+  ShouldRetry(httpResponse: HttpErrorResponse, retryCount: number): any { 
+    console.log(`Attemping to Reconnect....(${retryCount})`); 
+    if (httpResponse.status == 0) { 
+        return timer(1000);
     }
-    throw errors;
-
-
+    throw httpResponse;
   }
 
-  FailRetry(errorResponse: any): any 
-  {
-    return;
-  }
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request).pipe(retry({ count: 3, delay: this.ShouldRetry }),
-      // catchError(err => {
-      //   if(err.status == 401)
-      //   {
-      //     //  this.route.redirect("login");
-      //     //  return this.route.HttpEvent;
-      //   }
-      // }
-    );
+  handleError(error: any): any { 
+    let handled: boolean = false; 
+    if (error instanceof HttpErrorResponse) {
+      if (error.error instanceof ErrorEvent) {
+        console.error("Error Event");
+      } else {
+        console.log(`error status : ${error.status} ${error.statusText}`);
+        switch (error.status) {
+          case 401:      //login
+            this.router.navigateByUrl("/login");
+            console.log(`redirect to login`);
+            alertify.error("Invalid User Id and password");
+            handled = true;
+            break;
+          case 403:     //forbidden
+            this.router.navigateByUrl("/login");
+            console.log(`redirect to login`);
+            alertify.error("You are not allowed to access this feature, Please contact administrator");
+            handled = true;
+            break;
+          case 0:     //server Unavilable
+            this.router.navigateByUrl("/login");
+            console.log(`redirect to login`);
+            alertify.error("The Server is unavailable, Please contact administrator");
+            handled = true;
+            break;
+        }
+      }
+    }
+    else {
+      console.error("Other Errors");
+    }
+    if (handled) {
+      console.log('return back ');
+      return of(error);
+    } else {
+      console.log('throw error back to to the subscriber');
+      return throwError(()=>error);
+    }
   }
 }
